@@ -1,0 +1,16 @@
+{
+    "name": "poshtiban/todo-list",
+    "description": "A simple task manager app",
+    "type": "project",
+    "require": {
+        "hekmatinasser/verta": "^1.11"
+    },
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Nima Poshtiban",
+            "email": "poshtibannima@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

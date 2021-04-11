@@ -1,9 +1,13 @@
 <?php
 # initialization
-include "vendor/autoload.php";
-include "bootstrap/constants.php";
-include "config/config.php";
-include "libs/helpers.php";
+
+# limiting user direct access to the file
+
+
+include  "constants.php";
+include BASE_PATH . "vendor/autoload.php";
+include BASE_PATH . "config/config.php";
+include BASE_PATH . "libs/helpers.php";
 
 $dsn = "mysql:{$database_config->database};host={$database_config->host}";
 
@@ -13,5 +17,5 @@ try {
     diePage("Connection failed: " . $error->getMessage() . PHP_EOL);
 }
     
-
-include "libs/tasks.php";
+include BASE_PATH . "libs/auth.php";
+include BASE_PATH . "libs/tasks.php";

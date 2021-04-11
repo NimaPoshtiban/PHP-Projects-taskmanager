@@ -32,12 +32,25 @@
             </div>
           </div>
           <div class="menu">
-            <div class="title">Navigation</div>
-            <ul>
-              <li><i class="fa fa-home"></i>Home</li>
-              <li><i class="fa fa-signal"></i>Activity</li>
-              <li class="active"><i class="fa fa-tasks"></i>Manage Tasks</li>
-              <li><i class="fa fa-envelope"></i>Messages</li>
+            <div class="title">Folders</div>
+            <ul class="folders">
+              <?php foreach ($folders as $folder):?>  
+
+            <li>
+            
+              <a href="?folder_id=<?=  $folder->id?>">
+              <i class="fa fa-folder"></i><?= $folder->name;?></a>
+              <a href="?delete_folder=<?=  $folder->id?>" class="remove">
+              x</a>
+            </li>
+              <?php endforeach;?>
+
+              <li class="active"><i class="fa fa-folder"></i>Current Folder</li>
+              
+              <div class="folder-parent">
+              <input id="addFolderInput" type="text" placeholder="Add New folder" style="width: 65%;margin-left:3%;"/>
+              <button id="addFolderButton" class="btn">+</button>
+            </div>
             </ul>
           </div>
         </div>
@@ -91,7 +104,8 @@
       </div>
     </div>
     <!-- partial -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
+   
   </body>
 </html>

@@ -2,7 +2,7 @@
 # initialization
 
 # limiting user direct access to the file
-
+session_start();
 
 include  "constants.php";
 include BASE_PATH . "vendor/autoload.php";

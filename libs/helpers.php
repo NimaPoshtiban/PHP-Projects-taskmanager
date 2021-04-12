@@ -34,3 +34,12 @@ function dd($var)
     var_dump($var);
     echo "</pre>";
 }
+/**
+ * use for authentication message
+ *
+ * @param [type] $msg
+ * @return String
+ */
+function message($msg){
+    echo "<div style='padding:30px ;width: 80%; margin:10px; background:#f9dede; border:1px solid #cca4a4;color:#521717;border-radius:5px;'>{$msg}</div>";
+}

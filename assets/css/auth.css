@@ -74,7 +74,7 @@ button:focus {
   -moz-box-shadow: 0vw 3vh 6vh -2vh rgba(0, 0, 0, 0.4);
   box-shadow: 0vw 3vh 6vh -2vh rgba(0, 0, 0, 0.4);
   position: absolute;
-  height: 700px;
+  height: 500px;
   min-width: 800px;
   width: 60%;
   max-width: 1000px;

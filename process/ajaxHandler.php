@@ -14,10 +14,16 @@ switch ($_POST['action']) {
         echo "Filename is too short!";
         die();
     }
-   echo addFolder($_POST['folderName']);
+    addFolder($_POST['folderName']);
     break;
   case 'addTask':
-    //
+    
+    if (!isset($_POST['folderId'])||($_POST['folderId'])) {
+        echo "Task name is too short!";
+        die();
+    }
+    echo addTask($taskTitle, $folderId);
+    break;
   default:
   diePage('Invalid Action!');
     break;

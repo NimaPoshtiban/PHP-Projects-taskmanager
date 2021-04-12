@@ -13,7 +13,9 @@ body {
   font-size: 14px;
   font-smooth: antialiased;
 }
-
+a {
+  text-decoration: none;
+}
 .page {
   position: absolute;
   width: 80%;
@@ -146,9 +148,12 @@ body {
   margin-right: 10px;
 }
 .main .nav .menu ul li a {
-  text-decoration: none;
   color: #aaaaaa;
 }
+.main .nav .menu ul li.active a {
+  color: #79bc46;
+}
+
 .main .view {
   position: relative;
   margin-left: 200px;
@@ -285,20 +290,25 @@ a.remove {
   float: right;
   font-weight: 200;
   padding-right: 5x;
+  margin-right: 10px;
 }
-a.remove:hover{
+a.remove:hover {
   transform: scale(2.5);
   font-weight: 400;
 }
-#addFolderInput{
+#addFolderInput {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #AAAAAA;
-  
+  border-bottom: 1px solid #aaaaaa;
 }
 
-#addFolderButton:hover{
-outline: none;
+#addFolderButton:hover {
+  outline: none;
   cursor: pointer;
   opacity: 0.7;
+}
+
+span.created-at {
+  font-size: 11px;
+  margin-right: 17px;
 }

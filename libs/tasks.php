@@ -1,6 +1,6 @@
 <?php
 # limiting user direct access to the file
-defined('BASE_PATH') OR die("Permission Denied!");
+defined('BASE_PATH') or die("Permission Denied!");
 
 
 function getCurrentUserId()
@@ -31,7 +31,7 @@ function addFolder(string $folderName)
     $currentUserId = getCurrentUserId();
     $sql = "INSERT INTO taskmanager.folders (name,user_id) VALUES (:name,:user_id)";
     $statement = $pdo->prepare($sql);
-    $statement->execute(["name"=>"$folderName","user_id"=>"$currentUserId"]);
+    $statement->execute([":name"=>"$folderName","user_id"=>$currentUserId]);
     return $statement->rowCount();
 }
 
@@ -54,3 +54,36 @@ function getFolders():array
 }
 
 # tasks functions
+function deleteTask(string $task_id)
+{
+    global $pdo;
+    $sql = "DELETE FROM taskmanager.tasks WHERE id = $task_id";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    return $statement->rowCount();
+}
+function addTask(string $taskName, $folderId)
+{
+    global $pdo;
+    $currentUserId = getCurrentUserId();
+    $sql = "INSERT INTO taskmanager.tasks (title,user_id,folder_id) VALUES (:title,:user_id,:folder_id)";
+    $statement=$pdo->prepare($sql);
+    $statement->execute([":title"=>"$taskName",":user_id"=>$currentUserId,":folder_id"=>$folderId]);
+    return $statement->rowCount();
+}
+
+function getTasks():array
+{
+    global $pdo;
+    $folder = $_GET['folder_id'] ?? null;
+    $folderCondition = '';
+    if (isset($folder) and is_numeric($folder)) {
+        $folderCondition = "AND folder_id = $folder";
+    }
+    $currentUserId = getCurrentUserId();
+    $sql = "SELECT * FROM taskmanager.tasks WHERE user_id = $currentUserId $folderCondition";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $records = $statement->fetchAll(PDO::FETCH_OBJ);
+    return $records;
+}

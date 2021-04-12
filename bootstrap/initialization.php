@@ -17,5 +17,5 @@ try {
     diePage("Connection failed: " . $error->getMessage() . PHP_EOL);
 }
     
-include BASE_PATH . "libs/auth.php";
 include BASE_PATH . "libs/tasks.php";
+include BASE_PATH . "libs/auth.php";

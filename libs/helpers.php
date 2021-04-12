@@ -1,6 +1,12 @@
 <?php
 # limiting user direct access to the file
-defined('BASE_PATH') OR die("Permission Denied!");
+defined('BASE_PATH') or die("Permission Denied!");
+
+function site_url(string $uri=''):string
+{
+    return BASE_URL . $uri;
+}
+
 /**
  * helper function
  * shows database connection errors and close the connection
@@ -22,7 +28,8 @@ function isAjaxRequest()
     return false;
 }
 
-function dd($var){
+function dd($var)
+{
     echo "<pre>";
     var_dump($var);
     echo "</pre>";

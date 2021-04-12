@@ -19,7 +19,10 @@ switch ($_POST['action']) {
   case 'addTask':
     $taskTitle = $_POST['taskTitle'];
     $folderId = $_POST['folderId'];
-    // validation made some anonymous bugs ! 
+    if (!isset($_GET['folder_id']) && is_numeric($_GET['folder_id'])) {
+        echo "Task name is too short!";
+        die();
+    }
     echo addTask($taskTitle, $folderId);
     break;
   default:

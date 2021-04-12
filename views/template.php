@@ -36,7 +36,7 @@
             <div class="title">Folders</div>
             <ul class="folders">
 
-            <li class="<?= isset($_GET['folder_id']) && is_numeric($_GET['folder_id'])?'':'active'?>"><i class="fa fa-folder"></i>ALL</li>
+            <li class="<?= isset($_GET['folder_id']) && is_numeric($_GET['folder_id'])?'':'active'?>"><a href="<?=site_url()?>"><i class="fa fa-folder"></i>ALL</a></li>
               <?php foreach ($folders as $folder):?>  
 
             <li class="<?= $folder->id == $_GET['folder_id']? 'active':'' ?>" >
@@ -114,7 +114,9 @@
                 action:'addTask',folderId:<?=$_GET['folder_id'] ?? 0?>,taskTitle:input.val()
               },
               success: function(response){
-                alert(response)
+                /* use this function for testing your ajax request
+                * alert(response)
+                */
                 if(response){
                 location.reload()
                 }             

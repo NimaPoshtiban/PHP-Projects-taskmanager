@@ -1,6 +1,10 @@
 <?php
 include "bootstrap/initialization.php";
 
+if(!isLoggedIn()){
+    // redirect to auth from
+    header("Location: " . site_url('auth.php'));
+}
 
 if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder'])) {
     deleteFolder($_GET['delete_folder']);

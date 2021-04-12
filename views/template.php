@@ -75,7 +75,7 @@
                 <?php if (sizeof($tasks)>0):?>
                 <?php foreach ($tasks as $task):?>
                 <li class="<?= $task->is_done? 'checked':'' ?>">
-                  <i class="fa <?= $task->is_done? "fa-check-square-o" : "fa-square-o"?>">
+                  <i data-taskId="<?=$task->id ?>" class="isDone  fa <?= $task->is_done? "fa-check-square-o" : "fa-square-o"?>" style="hover:">
                     </i
                   ><span><?=$task->title?></span>
                   
@@ -103,6 +103,24 @@
     <script>
     (
       $(document).ready(function(){
+        $('.isDone').click(function(e){
+          const taskId = $(this).attr('data-taskId')
+          $.ajax({
+            url:'process/ajaxHandler.php',
+            method:"POST",
+            data:{
+              action:"doneSwitch",taskId:taskId
+            },
+            success:function(response){
+              if(response){
+                location.reload();
+              }else{
+               console.error('Ajax failed')
+              }
+            }
+          })
+        })
+
         $('#addTaskInput').on('keypress',function(e) {
           e.stopPropagation();
           if(e.which == 13) {

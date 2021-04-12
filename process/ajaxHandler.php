@@ -23,8 +23,12 @@ switch ($_POST['action']) {
         echo "Task name is too short!";
         die();
     }
-    echo addTask($taskTitle, $folderId);
+  addTask($taskTitle, $folderId);
     break;
+  case 'doneSwitch':
+    $task_id = $_POST['taskId'];
+      doneSwitch($task_id);
+      break;
   default:
   diePage('Invalid Action!');
     break;

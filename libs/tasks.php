@@ -87,3 +87,16 @@ function getTasks():array
     $records = $statement->fetchAll(PDO::FETCH_OBJ);
     return $records;
 }
+/**
+ * toggle checkbox 
+ *
+ * @param string $taskId
+ * @return void
+ */
+function doneSwitch(string $taskId){
+    global $pdo;
+    $currentUserId = getCurrentUserId();
+    $sql = "UPDATE taskmanager.tasks SET is_done = 1 - is_done  WHERE user_id = $currentUserId AND Id = $taskId";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+}

@@ -17,11 +17,9 @@ switch ($_POST['action']) {
     addFolder($_POST['folderName']);
     break;
   case 'addTask':
-    
-    if (!isset($_POST['folderId'])||($_POST['folderId'])) {
-        echo "Task name is too short!";
-        die();
-    }
+    $taskTitle = $_POST['taskTitle'];
+    $folderId = $_POST['folderId'];
+    // validation made some anonymous bugs ! 
     echo addTask($taskTitle, $folderId);
     break;
   default:

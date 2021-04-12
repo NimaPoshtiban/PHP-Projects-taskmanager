@@ -111,10 +111,13 @@
               url:'process/ajaxHandler.php',
               method:'POST',
               data:{
-                action:'addTask',folderId:<?=$_GET['folder_id'] ?>,taskTitle:input.val()
+                action:'addTask',folderId:<?=$_GET['folder_id'] ?? 0?>,taskTitle:input.val()
               },
               success: function(response){
+                alert(response)
+                if(response){
                 location.reload()
+                }             
               }
             })
           }

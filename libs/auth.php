@@ -2,6 +2,11 @@
 # limiting user direct access to the file
 defined('BASE_PATH') or die("Permission Denied!");
 
+function getCurrentUserId()
+{
+    return getLoggedInUser()->id ?? 0;
+}
+
 function isLoggedIn()
 {
     return isset($_SESSION['login']) ? true : false;

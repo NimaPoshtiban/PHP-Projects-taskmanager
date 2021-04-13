@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
         $result = register($params);
         if (!$result) {
             message("Error: something went wrong");
-        }else{
-          echo "Registration was SuccessFull <br> <a href='$home_url'>Navigate to homePage</a>";
+        } else {
+            redirect(site_url());
         }
     } elseif ($action == 'login') {
         $result = login($params['email'], $params['password']);
         if (!$result) {
             message("Error: Wrong Password or Email");
-        }else{
-            echo "<a href='$home_url'>Navigate to homePage</a>";
+        } else {
+            redirect(site_url());
         }
     }
 }

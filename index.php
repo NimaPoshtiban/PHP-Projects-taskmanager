@@ -8,7 +8,7 @@ if(isset($_GET['logout'])){
 
 if(!isLoggedIn()){
     // redirect to auth from
-    header("Location: " . site_url('auth.php'));
+    redirect(site_url('auth.php'));
 }
 # user is LoggedIn
 $user = getLoggedInUser();

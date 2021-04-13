@@ -3,10 +3,7 @@
 defined('BASE_PATH') or die("Permission Denied!");
 
 
-function getCurrentUserId()
-{
-    return 1;
-}
+
 # folder functions
 /**
  * delete a folder

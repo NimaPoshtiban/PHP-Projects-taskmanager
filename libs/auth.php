@@ -7,6 +7,7 @@ function isLoggedIn()
     return isset($_SESSION['login']) ? true : false;
 }
 
+
 function getLoggedInUser(){
   return $_SESSION['login'] ?? null;
 }
@@ -31,6 +32,11 @@ function register($userData):bool
     return $statement->rowCount() ? true : false;
 }
 
+function logout(){
+  unset($_SESSION['login']);
+}
+
+
 function login(string $email,string $password):bool
 {
   $user = getUserByEmail($email);
@@ -40,9 +46,11 @@ function login(string $email,string $password):bool
   # checking password
   if(password_verify($password,$user->password)){
     #login is successful
+    $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->email ) ) ) ;
+    $user->image = $grav_url;
     $_SESSION['login'] = $user;
     return true;
   }
   return false;
 }
-var_dump($_SESSION);
+

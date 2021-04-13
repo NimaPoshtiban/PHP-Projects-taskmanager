@@ -40,7 +40,7 @@ function login(string $email,string $password):bool
   # checking password
   if(password_verify($password,$user->password)){
     #login is successful
-    $_SESSION['user'] = $user;
+    $_SESSION['login'] = $user;
     return true;
   }
   return false;

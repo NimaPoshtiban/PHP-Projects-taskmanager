@@ -5,7 +5,7 @@ defined('BASE_PATH') or die("Permission Denied!");
 
 function getCurrentUserId()
 {
-    return $_SESSION['login']['id'];
+    return 1;
 }
 # folder functions
 /**
